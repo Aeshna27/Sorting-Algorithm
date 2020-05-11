@@ -1,0 +1,32 @@
+int partition(int a[], int start, int end)
+{
+int i,j,pivot,temp;
+        i = start+1;
+        pivot = a[start];
+        for(j = start+1; j<=end;j++)
+        {
+                if (a[j] < pivot)
+                {
+                        temp = a[i];
+                        a[i] = a[j];
+                        a[j] = temp;
+                        i++;
+                }
+        }
+        temp = a[i-1];
+        a[i-1] = a[start];
+        a[start] = temp;
+return i-1;
+}
+
+int quicksort(int a[],int start, int end)
+{
+int pivot;
+        if(start<end)
+        {
+                pivot = partition(a,start,end);
+                quicksort(a, start, pivot-1);
+                quicksort(a, pivot+1,end);
+        }
+return 0;
+}
